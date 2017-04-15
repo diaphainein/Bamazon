@@ -30,8 +30,9 @@ var bamazonCustomer = function() {
         // displays all items for sale 
         console.log("Hello! Here are all the items available for sale: ");
         console.log("===========================================");
+        console.log(table.toString());
         for (var i = 0; i < res.length; i++) {
-            table.push([res[i].id, res[i].ProductName, res[i].DepartmentName, res[i].Price, res[i].StockQuantity]);
+            table.push([res[i].item_id, res[i].product_name, res[i].department_name, res[i].price, res[i].stock_quantity]);
         }
         console.log("-----------------------------------------------");
         
@@ -60,13 +61,13 @@ var bamazonCustomer = function() {
                 }
             }
         }]).then(function(answer) {
-            var chosenId = answer.itemId - 1
+            var chosenId = answer.item_id - 1
             var chosenProduct = res[chosenId]
             var chosenQuantity = answer.Quantity
-            if (chosenQuantity < res[chosenId].StockQuantity) {
+            if (chosenQuantity < res[chosenId].stock_quantity) {
                 console.log("Your total for " + "(" + answer.Quantity + ")" + " - " + res[chosenId].ProductName + " is: " + res[chosenId].Price.toFixed(2) * chosenQuantity);
                 connection.query("UPDATE products SET ? WHERE ?", [{
-                    StockQuantity: res[chosenId].StockQuantity - chosenQuantity
+                    stock_quantity: res[chosenId].stock_quantity - chosenQuantity
                 }, {
                     id: res[chosenId].id
                 }], function(err, res) {
