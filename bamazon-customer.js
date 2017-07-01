@@ -61,11 +61,11 @@ var bamazonCustomer = function() {
                 }
             }
         }]).then(function(answer) {
-            var chosenId = answer.item_id - 1
-            var chosenProduct = res[chosenId]
-            var chosenQuantity = answer.Quantity
+            var chosenId = answer.itemId - 1;
+            var chosenProduct = res[chosenId];
+            var chosenQuantity = answer.Quantity;
             if (chosenQuantity < res[chosenId].stock_quantity) {
-                console.log("Your total for " + "(" + answer.Quantity + ")" + " - " + res[chosenId].ProductName + " is: " + res[chosenId].Price.toFixed(2) * chosenQuantity);
+                console.log("Your total for " + "(" + answer.Quantity + ")" + " - " + res[chosenId].product_name + " is: " + res[chosenId].price.toFixed(2) * chosenQuantity);
                 connection.query("UPDATE products SET ? WHERE ?", [{
                     stock_quantity: res[chosenId].stock_quantity - chosenQuantity
                 }, {
@@ -76,7 +76,7 @@ var bamazonCustomer = function() {
                 });
 
             } else {
-                console.log("Oops! Looks like we don't have enough of that in our inventory to complete your request. We have " + res[chosenId].StockQuantity + " left in our inventory.");
+                console.log("Oops! Looks like we don't have enough of that in our inventory to complete your request. We have " + res[chosenId].stock_quantity + " left in our inventory.");
                 bamazonCustomer();
             }
         });
