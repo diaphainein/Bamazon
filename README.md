@@ -12,6 +12,6 @@ The Bamazon Customer Portal allows users to view the current items available for
 
 ### Technologies Used
 
-Bamazon was built using Node.js, and runs specificallly in Node, using Node specific commands. 
+Bamazon was built using Node.js, and runs specifically in Node, using Node specific commands. 
 It also utilizes MySQL as the database, in which inventory information is stored, updated, and deleted as "transactions" take place. 
 NPM packages Inquirer, CLI-Table, and MySQL were used to ensure a smooth experience for both the user and the programmer.
