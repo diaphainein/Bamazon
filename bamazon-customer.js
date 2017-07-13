@@ -26,7 +26,7 @@ var bamazonCustomer = function() {
         var table = new Table({
             head: ['ID', 'Product Name', 'Department', 'Price', 'Stock Quantity']
         });
-
+        
         // displays all items for sale 
         console.log("Hello! Here are all the items available for sale: ");
         console.log("===========================================");
